@@ -47,7 +47,7 @@ public class AppointmentControllerImpl implements AppointmentController {
    @Override
     public ResponseEntity<?> displayAppointment(Optional<Integer> appointmentId, Optional<LocalDate> appointmentDate){
         RestTemplate restTemplate = new RestTemplate();
-        //case apoointmentId is preset
+        //case appointmentId is preset
         if (appointmentId.isPresent() && appointmentDate.isEmpty()){
             //adding headers
             HttpHeaders httpHeaders = new HttpHeaders();
@@ -198,7 +198,7 @@ public class AppointmentControllerImpl implements AppointmentController {
         return responseEntity;
     }
 
-    @DeleteMapping("/rest-delete")
+    @Override
     public ResponseEntity<?> deleteAppointmentRest(@RequestParam Optional<Integer> appointmentId){
         RestTemplate restTemplate = new RestTemplate();
         //adding headers

@@ -6,6 +6,7 @@ import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.client.HttpClientErrorException;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -41,6 +42,24 @@ public class ErrorResolver {
         ErrorResponse response = new ErrorResponse();
         response.setErrorDescription("Formatul pentru data este invalid. Reintroduceti data folosing formatul yyyy-MM-dd");
         servletResponse.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+        return response;
+    }
+
+    @ExceptionHandler(HttpClientErrorException.Conflict.class)
+    public ErrorResponse handleClientErrorException(HttpClientErrorException.Conflict exception,
+                                                      HttpServletResponse servletResponse) {
+        ErrorResponse response = new ErrorResponse();
+        response.setErrorDescription("Item already exists.");
+        servletResponse.setStatus(HttpServletResponse.SC_CONFLICT);
+        return response;
+    }
+
+    @ExceptionHandler(IllegalStateException.class)
+    public ErrorResponse handleIllegalStateException(IllegalStateException exception,
+                                                    HttpServletResponse servletResponse) {
+        ErrorResponse response = new ErrorResponse();
+        response.setErrorDescription("Item already exists.");
+        servletResponse.setStatus(HttpServletResponse.SC_CONFLICT);
         return response;
     }
 }
