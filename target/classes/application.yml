@@ -1,0 +1,17 @@
+mvc:
+  basepathDoctor: http://localhost:8084/doctor/
+  basepathPatient: http://localhost:8084/patient/
+  basepathAppointment: http://localhost:8084/appointment/
+
+  getEndpoint: display
+  postEndpoint: create
+  putEndpoint: update
+  deleteEndpoint: delete
+      #  getPatientEndpoint: display
+    ##
+    ##  getAppointmentEndpoint: display
+    ##
+    ##  basepathPostPatient: http://localhost:8084/patient/
+    ##  postPatientEndpoint: create
+  ##  basepathPostDoctor: http://localhost:8084/doctor/
+  ##  postDoctorEndpoint: create
